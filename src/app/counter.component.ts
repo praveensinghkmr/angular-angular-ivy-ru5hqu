@@ -3,9 +3,9 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'counter',
   template: `
-  <button (click)="increment()">increment</button>
-  <div>{{count}}</div>
-  <button  (click)="decrement()">decrement</button>
+  <button (click)="decrement()">-</button>
+  <div style="display:inline-block">{{count}}</div>
+  <button  (click)="increment()">+</button>
   `,
 })
 export class CounterComponent {
