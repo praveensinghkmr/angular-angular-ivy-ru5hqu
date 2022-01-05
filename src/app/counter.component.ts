@@ -20,6 +20,8 @@ export class CounterComponent {
   }
 
   decrement() {
+
+    if(this.count > 0)
     --this.count;
   }
 }
