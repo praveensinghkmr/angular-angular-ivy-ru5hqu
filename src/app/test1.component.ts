@@ -3,32 +3,34 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'test1',
   template: `
-  
-  <div *ngFor="let question of questions" 
-    style="border: 1px solid black; margin:10px; padding:10px" >
-    <div>
+  <div class="row">
+  <div class="col-12" *ngFor="let question of questions">
+  <div class = "card mt-2 mb-2">
+    <div class="card-header">
       {{question.statement}}
     </div>
-    <div>
+    <div class="card-body">
       <input type="radio" value="1">
       {{question.option1}}
     </div>
-    <div>
+    <div class="card-body">
       <input type="radio" value="2">
       {{question.option2}}
     </div>
-    <div>
+    <div class="card-body">
       <input type="radio" value="3">
       {{question.option3}}
       </div>
-    <div>
+    <div class="card-body">
       <input type="radio" value="4">
       {{question.option4}}
     </div>
 
-    <div>
-      {{question.marks}}
+    <div class="card-footer">
+      Marks: {{question.marks}}
     </div>
+  </div>
+  </div>
   </div>
   `,
 })
