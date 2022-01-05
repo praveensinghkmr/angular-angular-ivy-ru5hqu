@@ -14,9 +14,28 @@ interface Questions2 {
 
 @Component({
   selector: 'test2', // custom HTML tag.
+  styles: [
+    `
+    .wrong {
+        font-size: 8pt,
+        color: red;
+    }
+
+    .correct {
+      font-size: 8pt;
+      color: green;
+    }
+
+    .nomarks{
+      font-size: 8pt;
+      color:yellow:
+    }
+  `,
+  ],
+
   template: `
   <div class="row">
-    <ng-container *ngIf="!isTestOver">
+    <!--ng-container *ngIf="!isTestOver"-->
     <div class = "col-12" *ngFor="let question of questions">
       <div class="card mt-2 mb-2">
 
@@ -29,13 +48,26 @@ interface Questions2 {
             <!--Tow way data binding done using the ngModel-->
             <input type="checkbox" [(ngModel)]="option.hasUserSelected"/> 
             {{option.text}}
+            <span *ngIf="isTestOver">
+              <span *ngIf="option.isCorrect && option.hasUserSelected" class = "correct">
+                  Correct - +{{option.marks}}
+              </span>
+
+              <span *ngIf="!option.isCorrect && option.hasUserSelected" class = "wrong">
+                Wrong: -{{option.marks}}
+              </span>
+
+              <span *ngIf="!option.hasUserSelected" class = "nomarks">
+                Not Attempted. 0 Marks. 
+              </span>
+            </span>
           </label>
         </div>
       </div>    
     </div>
-    </ng-container>
+    <!--/ng-container-->
 
-    <div class="col-12" *ngIf="!isTestOver">
+    <div class="col-12">
       <button class="btn btn-primary" (click)="finish()">Finish</button>
     </div>
     <div class="col-12" *ngIf="isTestOver">
@@ -60,6 +92,7 @@ export class Test2Component {
   public totalMarks = 0;
 
   public finish(/* this = reference of an object*/) {
+    this.userMarks = 0;
     for (let question of this.questions) {
       for (let option of question.options) {
         if (option.isCorrect && option.hasUserSelected) {
