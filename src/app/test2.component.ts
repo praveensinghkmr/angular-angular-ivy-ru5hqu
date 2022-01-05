@@ -17,7 +17,7 @@ interface Questions2 {
   styles: [
     `
     .wrong {
-        font-size: 12pt,
+        font-size: 45pt,
         color: red;
     }
 
@@ -46,7 +46,8 @@ interface Questions2 {
         <div class="card-body" *ngFor="let option of question.options">
           <label>
             <!--Tow way data binding done using the ngModel-->
-            <input type="checkbox" [(ngModel)]="option.hasUserSelected"/> 
+            <input type="checkbox" [(ngModel)]
+            ="option.hasUserSelected" [disabled]="isTestOver"/> 
             {{option.text}}
             <span *ngIf="isTestOver">
               <span *ngIf="option.isCorrect && option.hasUserSelected" class="correct">
@@ -67,7 +68,7 @@ interface Questions2 {
     </div>
     <!--/ng-container-->
 
-    <div class="col-12">
+    <div class="col-12" *ngIf="!isTestOver">
       <button class="btn btn-primary" (click)="finish()">Finish</button>
     </div>
     <div class="col-12" *ngIf="isTestOver">
