@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'counter',
@@ -15,13 +15,14 @@ export class CounterComponent {
   // internal state
   public count = 0; // instance data member
 
+  @Input() // parent can supply the data
+  public max = 0;
+
   increment() {
-    ++this.count;
+    if (this.count < this.max) ++this.count;
   }
 
   decrement() {
-
-    if(this.count > 0)
-    --this.count;
+    if (this.count > 0) --this.count;
   }
 }
