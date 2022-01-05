@@ -37,6 +37,11 @@ import { Component } from '@angular/core';
               Correct
             </span>
 
+            <span *ngIf="question.correctAnswer === 1 && question.userSelectedOption === 1" class="correct">
+              + {{question.marks}}
+            </span>
+
+
             <span *ngIf="question.correctAnswer !== 1 && question.userSelectedOption === 1" class="wrong">
               Wrong
             </span>
@@ -51,6 +56,9 @@ import { Component } from '@angular/core';
           <span *ngIf="isTestOver">
             <span *ngIf="question.correctAnswer === 2" class="correct">
               Correct
+            </span>
+            <span *ngIf="question.correctAnswer === 2 && question.userSelectedOption === 2" class="correct">
+            + {{question.marks}}
             </span>
 
             <span *ngIf="question.correctAnswer !== 2 && question.userSelectedOption == 2" class="wrong">
@@ -68,6 +76,9 @@ import { Component } from '@angular/core';
             <span *ngIf="question.correctAnswer === 3" class="correct">
               Correct
             </span>
+            <span *ngIf="question.correctAnswer === 3 && question.userSelectedOption === 3" class="correct">
+            + {{question.marks}}  
+            </span>
 
             <span *ngIf="question.correctAnswer !== 3 && question.userSelectedOption === 3" class="wrong">
               Wrong
@@ -83,6 +94,9 @@ import { Component } from '@angular/core';
           <span *ngIf="isTestOver">
             <span *ngIf="question.correctAnswer === 4" class="correct">
               Correct - +{{question.marks}}
+            </span>
+            <span *ngIf="question.correctAnswer === 4 && question.userSelectedOption === 4" class="correct">
+            + {{question.marks}}
             </span>
 
             <span *ngIf="question.correctAnswer !== 4 && question.userSelectedOption === 4" class="wrong">
