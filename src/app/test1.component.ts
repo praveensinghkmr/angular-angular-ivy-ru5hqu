@@ -4,26 +4,34 @@ import { Component } from '@angular/core';
   selector: 'test1',
   template: `
   <div class="row">
-  <div class="col-12" *ngFor="let question of questions">
+  <div class="col-12" *ngFor="let question of questions; let qi = index;">
   <div class = "card mt-2 mb-2">
     <div class="card-header">
       {{question.statement}}
     </div>
     <div class="card-body">
-      <input type="radio" value="1">
-      {{question.option1}}
+      <label>
+        <input type="radio" value="1" name="option_{{qi}}">
+        {{question.option1}}
+      </label>
     </div>
     <div class="card-body">
-      <input type="radio" value="2">
-      {{question.option2}}
+      <label>  
+        <input type="radio" value="2" name="option_{{qi}}">
+        {{question.option2}}
+      </label>
     </div>
     <div class="card-body">
-      <input type="radio" value="3">
-      {{question.option3}}
+      <label>
+        <input type="radio" value="3" name="option_{{qi}}">
+        {{question.option3}}
+      </label>
       </div>
     <div class="card-body">
-      <input type="radio" value="4">
-      {{question.option4}}
+      <label>
+        <input type="radio" value="4" name="option_{{qi}}">
+        {{question.option4}}
+      </label>
     </div>
 
     <div class="card-footer">
