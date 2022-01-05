@@ -16,6 +16,7 @@ interface Questions2 {
   selector: 'test2', // custom HTML tag.
   template: `
   <div class="row">
+    <ng-container *ngIf="!isTestOver">
     <div class = "col-12" *ngFor="let question of questions">
       <div class="card mt-2 mb-2">
 
@@ -32,16 +33,48 @@ interface Questions2 {
         </div>
       </div>    
     </div>
+    </ng-container>
 
-    <div class="col-12">
+    <div class="col-12" *ngIf="!isTestOver">
       <button class="btn btn-primary" (click)="finish()">Finish</button>
     </div>
+    <div class="col-12" *ngIf="isTestOver">
+      <div class="card">
+        <div class="card-header">
+          Test Result
+        </div>
+
+        <div class="card-body">
+          You obtained {{userMarks}} out of {{totalMarks}}
+        </div>
+      </div>
+    </div>
+
     
   </div>
   `,
 })
 export class Test2Component {
-  public finish() {}
+  public isTestOver = false;
+  public userMarks = 0;
+  public totalMarks = 0;
+
+  public finish(/* this = reference of an object*/) {
+    for (let question of this.questions) {
+      for (let option of question.options) {
+        if (option.isCorrect && option.hasUserSelected) {
+          this.userMarks += option.marks;
+        } else if (!option.isCorrect && option.hasUserSelected) {
+          this.userMarks -= option.marks;
+        }
+        //if (option.isCorrect) {
+        this.totalMarks += option.marks;
+        //}
+      }
+    }
+
+    this.isTestOver = true;
+  }
   public questions: Questions2[] = [
     {
       statement: 'AAA',
