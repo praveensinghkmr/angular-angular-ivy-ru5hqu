@@ -17,18 +17,18 @@ interface Questions2 {
   styles: [
     `
     .wrong {
-        font-size: 8pt,
+        font-size: 12pt,
         color: red;
     }
 
     .correct {
-      font-size: 8pt;
+      font-size: 12pt;
       color: green;
     }
 
     .nomarks{
-      font-size: 8pt;
-      color:yellow:
+      font-size: 12pt;
+      color: black;
     }
   `,
   ],
@@ -49,15 +49,15 @@ interface Questions2 {
             <input type="checkbox" [(ngModel)]="option.hasUserSelected"/> 
             {{option.text}}
             <span *ngIf="isTestOver">
-              <span *ngIf="option.isCorrect && option.hasUserSelected" class = "correct">
+              <span *ngIf="option.isCorrect && option.hasUserSelected" class="correct">
                   Correct - +{{option.marks}}
               </span>
 
-              <span *ngIf="!option.isCorrect && option.hasUserSelected" class = "wrong">
+              <span *ngIf="!option.isCorrect && option.hasUserSelected" class="wrong">
                 Wrong: -{{option.marks}}
               </span>
 
-              <span *ngIf="!option.hasUserSelected" class = "nomarks">
+              <span *ngIf="!option.hasUserSelected" class="nomarks">
                 Not Attempted. 0 Marks. 
               </span>
             </span>
