@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
     </div>
     <div class="card-body">
       <label>
-        <input type="radio" value="1" name="option_{{qi}}">
+        <input type="radio" value="1" name="option_{{qi}}" [(ngModel)]="question.userSelectedOption"/>
         {{question.option1}}
       </label>
     </div>
@@ -52,6 +52,7 @@ export class Test1Component {
       option4: 'A4',
       correctAnswer: 1,
       marks: 5,
+      userSelectedOption: 0,
     },
     {
       statement: 'BBB',
@@ -61,6 +62,8 @@ export class Test1Component {
       option4: 'A4',
       correctAnswer: 1,
       marks: 5,
+      userSelectedOption: 0,
+
     },
     {
       statement: 'CCC',
@@ -70,6 +73,7 @@ export class Test1Component {
       option4: 'A4',
       correctAnswer: 1,
       marks: 5,
+      userSelectedOption: 0,
     },
     {
       statement: 'DDD',
@@ -79,6 +83,7 @@ export class Test1Component {
       option4: 'A4',
       correctAnswer: 1,
       marks: 5,
+      userSelectedOption: 0,
     },
     {
       statement: 'EEE',
@@ -88,6 +93,7 @@ export class Test1Component {
       option4: 'A4',
       correctAnswer: 1,
       marks: 5,
+      userSelectedOption: 0,
     },
     {
       statement: 'AAA',
@@ -97,6 +103,7 @@ export class Test1Component {
       option4: 'A4',
       correctAnswer: 1,
       marks: 5,
+      userSelectedOption: 0,
     },
   ];
 }
