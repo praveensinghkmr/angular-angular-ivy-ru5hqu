@@ -2,6 +2,24 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'test1',
+  styles: [
+    `
+    .wrong {
+        font-size: 12pt;
+        color: red;
+    }
+
+    .correct {
+      font-size: 12pt;
+      color: green;
+    }
+
+    .nomarks{
+      font-size: 12pt;
+      color: black;
+    }
+  `,
+  ],
   template: `
     <div class="row">
     <div class="col-12" *ngFor="let question of questions; let qi = index;">
@@ -15,73 +33,60 @@ import { Component } from '@angular/core';
           [disabled] = "isTestOver"/>
           {{question.option1}}
           <span *ngIf="isTestOver">
-            <span *ngIf="question.correctAnswer == 1" >
-              Correct - +{{question.marks}}
+            <span *ngIf="question.correctAnswer === 1" class="correct">
+              Correct
             </span>
 
-            <span *ngIf="question.correctAnswer != 1">
-              Wrong: -{{question.marks}}
+            <span *ngIf="question.correctAnswer !== 1 && question.userSelectedOption === 1" class="wrong">
+              Wrong
             </span>
 
-            <span *ngIf="question.userSelectedOption == 0">
-              Not Attempted. 0 Marks. 
-            </span>
           </span>
         </label>
       </div>
       <div class="card-body">
         <label>  
-          <input type="radio" [value]="2" name="option_{{qi}}" [(ngModel)]="question.userSelectedOption">
+          <input type="radio" [value]="2" name="option_{{qi}}" [(ngModel)]="question.userSelectedOption" [disabled] = "isTestOver">
           {{question.option2}}
           <span *ngIf="isTestOver">
-            <span *ngIf="question.correctAnswer == 2" >
-              Correct - +{{question.marks}}
+            <span *ngIf="question.correctAnswer === 2" class="correct">
+              Correct
             </span>
 
-            <span *ngIf="question.correctAnswer != 2">
-              Wrong: -{{question.marks}}
+            <span *ngIf="question.correctAnswer !== 2 && question.userSelectedOption == 2" class="wrong">
+              Wrong
             </span>
 
-            <span *ngIf="question.userSelectedOption == 0">
-              Not Attempted. 0 Marks. 
-            </span>
           </span>
         </label>
       </div>
       <div class="card-body">
         <label>
-          <input type="radio" [value]="3" name="option_{{qi}}" [(ngModel)]="question.userSelectedOption">
+          <input type="radio" [value]="3" name="option_{{qi}}" [(ngModel)]="question.userSelectedOption" [disabled] = "isTestOver">
           {{question.option3}}
           <span *ngIf="isTestOver">
-            <span *ngIf="question.correctAnswer == 3" >
-              Correct - +{{question.marks}}
+            <span *ngIf="question.correctAnswer === 3" class="correct">
+              Correct
             </span>
 
-            <span *ngIf="question.correctAnswer != 3">
-              Wrong: -{{question.marks}}
+            <span *ngIf="question.correctAnswer !== 3 && question.userSelectedOption === 3" class="wrong">
+              Wrong
             </span>
 
-            <span *ngIf="question.userSelectedOption == 3">
-              Not Attempted. 0 Marks. 
-            </span>
           </span>
         </label>
         </div>
       <div class="card-body">
         <label>
-          <input type="radio" [value]="4" name="option_{{qi}}" [(ngModel)]="question.userSelectedOption">
+          <input type="radio" [value]="4" name="option_{{qi}}" [(ngModel)]="question.userSelectedOption" [disabled] = "isTestOver">
           {{question.option4}}
           <span *ngIf="isTestOver">
-            <span *ngIf="question.correctAnswer == 4" >
+            <span *ngIf="question.correctAnswer === 4" class="correct">
               Correct - +{{question.marks}}
             </span>
 
-            <span *ngIf="question.correctAnswer != 4">
-              Wrong: -{{question.marks}}
-            </span>
-
-            <span *ngIf="question.userSelectedOption == 0">
-              Not Attempted. 0 Marks. 
+            <span *ngIf="question.correctAnswer !== 4 && question.userSelectedOption === 4" class="wrong">
+              Wrong
             </span>
           </span>
         </label>

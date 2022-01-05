@@ -17,7 +17,7 @@ interface Questions2 {
   styles: [
     `
     .wrong {
-        font-size: 45pt,
+        font-size: 45pt;
         color: red;
     }
 
