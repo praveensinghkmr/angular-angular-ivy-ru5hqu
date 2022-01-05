@@ -5,8 +5,9 @@ import { Component } from '@angular/core';
   template: `
   
   <div class = "row">
-  <div class = "col-2" *ngFor="let product of products">
-  <div class ="card">
+  <!-- responsive UI in bootstrap using grid-->
+  <div class = "col-xl-2 col-lg-2 col-md-3 col-sm-6 col-xs-12" *ngFor="let product of products">
+  <div class ="card mt-3 mb-3">
     <div class="card-header">{{product.name}}</div>
     <div class="card-body">{{product.price}}</div>
     <div class="card-footer">
